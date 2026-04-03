@@ -13,7 +13,7 @@ import { FinalLinks } from "@/components/sections/FinalLinks";
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-full bg-white font-sans text-[#2d2f31]">
+    <div className="flex flex-col w-full bg-white font-sans text-[#2d2f31] overflow-hidden">
       <PromoBanner />
       <Hero />
       <GoogleAISection />

@@ -107,7 +107,7 @@ export function Hero() {
                                         backgroundPosition: "center",
                                     }}
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/60 to-[#0f172a]/20" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/20" />
                                 </div>
 
                                 {/* Text section */}
@@ -132,10 +132,10 @@ export function Hero() {
                                         {/* =============================
                         🔵 ButtonS (WITH LINK ADDED)
                       ============================= */}
-                                        <div className="flex justify-center md:justify-start gap-4">
+                                        <div className="flex flex-col md:flex-row justify-center md:justify-start gap-4">
                                             {slide.Button1_text && (
                                                 <Link href={slide.Button1_link || "#"}>
-                                                    <Button className="bg-brand-primary text-white px-8 py-3 text-lg font-bold hover:bg-brand-secondary transition duration-300">
+                                                    <Button className="w-full md:w-auto bg-brand-primary text-white px-8 py-3 text-lg font-bold hover:bg-brand-secondary transition duration-300">
                                                         {slide.Button1_text}
                                                     </Button>
                                                 </Link>
@@ -143,7 +143,7 @@ export function Hero() {
 
                                             {slide.Button2_text && (
                                                 <Link href={slide.Button2_link || "#"}>
-                                                    <Button className="text-white border border-white hover:bg-white/10 px-8 py-3 text-lg font-bold transition duration-300">
+                                                    <Button className="w-full md:w-auto text-white border border-white hover:bg-white/10 px-8 py-3 text-lg font-bold transition duration-300">
                                                         {slide.Button2_text}
                                                     </Button>
                                                 </Link>
