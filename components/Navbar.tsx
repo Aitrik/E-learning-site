@@ -78,6 +78,9 @@ export function Navbar() {
                             </div>
                             <hr />
                             <div className="flex flex-col gap-2 font-medium">
+                                <Link href="/courses" onClick={close} className="py-2 hover:text-brand-primary">
+                                    Courses
+                                </Link>
                                 <Link href="#" onClick={close} className="py-2 hover:text-brand-primary">
                                     Eduverde Business
                                 </Link>
