@@ -39,14 +39,14 @@ export function Navbar() {
     return (
         <nav className="flex h-[72px] items-center border-b border-gray-200 px-4 md:px-6 gap-4 w-full max-w-[1440px] mx-auto bg-white/95 backdrop-blur-sm sticky top-0 z-50">
             {/* Mobile Hamburger Menu */}
-            <div className="h-screen md:hidden flex items-center bg-white overflow-y-auto">
+            <div className="md:hidden flex items-center bg-white">
                 <Sheet>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon" className="shrink-0">
                             <Menu size={24} />
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="left" className="w-[300px] sm:w-[500px] bg-white border-r-0 shadow-2xl z-[100] text-black">
+                    <SheetContent side="left" className="w-[300px] sm:w-[500px] bg-white border-r-0 shadow-2xl z-[100] text-black overflow-y-auto">
                         <SheetHeader className="text-left mb-6 border-b pb-4">
                             <SheetTitle>Menu</SheetTitle>
                         </SheetHeader>
