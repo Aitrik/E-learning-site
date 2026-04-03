@@ -23,18 +23,18 @@ export function Hero() {
             banner_heading1: "Explore in-demand skillsets",
             banner_sub_heading: "Unlock your potential with our curated selection of in-demand courses. From tech and business to creative arts, we have the perfect program to help you achieve your goals.",
             Button1_text: "Explore Courses",
-            Button1_link: "#",
+            Button1_link: "/courses",
             Button2_text: "Learn More",
-            Button2_link: "#",
+            Button2_link: "/about",
         },
         {
             banner_image: "/images/slide2.jpg",
             banner_heading1: "Offline/online course enrolment and training",
             banner_sub_heading: "Unlock your potential with our curated selection of in-demand courses. From tech and business to creative arts, we have the perfect program to help you achieve your goals.",
             Button1_text: "Explore Courses",
-            Button1_link: "#",
+            Button1_link: "/courses",
             Button2_text: "View Plans",
-            Button2_link: "#",
+            Button2_link: "/about",
         }
     ];
 
