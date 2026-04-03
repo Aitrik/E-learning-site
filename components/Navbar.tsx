@@ -2,10 +2,9 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Search, ShoppingCart, Heart, Bell, Menu, ChevronRight, Code, Briefcase, PieChart, Monitor, FileText, User, PenTool, Target, TvMinimalPlay, Bot } from "lucide-react"
+import { Search, ShoppingCart, Bell, Menu, ChevronRight, Code, Briefcase, PieChart, Monitor, FileText, User, PenTool, Target, TvMinimalPlay, Bot } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ThemeToggle } from "./ThemeToggle"
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -21,8 +20,10 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
+import { useState } from "react"
 
 export function Navbar() {
+    const [open, setOpen] = useState(false)
     const categories = [
         { name: "Digital Marketing", icon: <TvMinimalPlay size={16} /> },
         { name: "AI ML", icon: <Bot size={16} /> },
@@ -34,13 +35,16 @@ export function Navbar() {
         { name: "Personal Development", icon: <User size={16} /> },
         { name: "Design", icon: <PenTool size={16} /> },
         { name: "Marketing", icon: <Target size={16} /> },
-    ];
+    ]
+
+    const close = () => setOpen(false)
 
     return (
         <nav className="flex h-[72px] items-center border-b border-gray-200 px-4 md:px-6 gap-4 w-full max-w-[1440px] mx-auto bg-white/95 backdrop-blur-sm sticky top-0 z-50">
+
             {/* Mobile Hamburger Menu */}
             <div className="md:hidden flex items-center bg-white">
-                <Sheet>
+                <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon" className="shrink-0">
                             <Menu size={24} />
@@ -52,14 +56,18 @@ export function Navbar() {
                         </SheetHeader>
                         <div className="flex flex-col gap-4">
                             <div className="flex flex-col gap-2 font-bold mb-4">
-                                <Link href="/login" className="py-2 hover:text-brand-primary">Log in</Link>
-                                <Link href="/signup" className="py-2 hover:text-brand-primary">Sign up</Link>
+                                <Link href="/login" onClick={close} className="py-2 hover:text-brand-primary">
+                                    Log in
+                                </Link>
+                                <Link href="/signup" onClick={close} className="py-2 hover:text-brand-primary">
+                                    Sign up
+                                </Link>
                             </div>
                             <hr />
                             <div className="flex flex-col gap-2 font-medium">
                                 <h3 className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-2">Categories</h3>
                                 {categories.map((cat, i) => (
-                                    <Link key={i} href="#" className="py-2 flex justify-between items-center group">
+                                    <Link key={i} href="#" onClick={close} className="py-2 flex justify-between items-center group">
                                         <div className="flex items-center gap-3">
                                             <span className="text-gray-400 group-hover:text-brand-primary transition-colors">{cat.icon}</span>
                                             <span className="group-hover:text-brand-primary transition-colors">{cat.name}</span>
@@ -70,8 +78,12 @@ export function Navbar() {
                             </div>
                             <hr />
                             <div className="flex flex-col gap-2 font-medium">
-                                <Link href="#" className="py-2 hover:text-brand-primary">Eduverde Business</Link>
-                                <Link href="#" className="py-2 hover:text-brand-primary">Teach on Eduverde</Link>
+                                <Link href="#" onClick={close} className="py-2 hover:text-brand-primary">
+                                    Eduverde Business
+                                </Link>
+                                <Link href="#" onClick={close} className="py-2 hover:text-brand-primary">
+                                    Teach on Eduverde
+                                </Link>
                             </div>
                         </div>
                     </SheetContent>
@@ -89,7 +101,7 @@ export function Navbar() {
                 />
             </Link>
 
-            {/* Desktop Categories Menu (Hover Dropdown) */}
+            {/* Desktop Categories Menu */}
             <div className="hidden lg:flex shrink-0 z-50">
                 <NavigationMenu>
                     <NavigationMenuList>
@@ -102,10 +114,7 @@ export function Navbar() {
                                     {categories.map((component, idx) => (
                                         <li key={idx}>
                                             <NavigationMenuLink asChild>
-                                                <a
-                                                    href="#"
-                                                    className="flex items-center text-sm gap-3 select-none rounded-xl p-1 leading-none no-underline outline-none transition-all duration-300 hover:bg-brand-primary/5 hover:text-brand-primary group font-medium"
-                                                >
+                                                <a href="#" className="flex items-center text-sm gap-3 select-none rounded-xl p-1 leading-none no-underline outline-none transition-all duration-300 hover:bg-brand-primary/5 hover:text-brand-primary group font-medium">
                                                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-50 text-gray-500 group-hover:bg-white group-hover:text-brand-primary group-hover:shadow-sm transition-all duration-300">
                                                         {component.icon}
                                                     </div>
@@ -121,13 +130,13 @@ export function Navbar() {
                 </NavigationMenu>
             </div>
 
-            {/* Search Bar - Full stretch */}
+            {/* Search Bar */}
             <div className="flex-1 relative hidden md:block group h-12">
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-text-primary">
                     <Search size={18} />
                 </div>
                 <Input
-                    className="pl-12 h-full w-full  rounded-full bg-[#f7f9fa] focus-visible:ring-0 focus:bg-white transition-all placeholder:text-text-secondary text-sm"
+                    className="pl-12 h-full w-full rounded-full bg-[#f7f9fa] focus-visible:ring-0 focus:bg-white transition-all placeholder:text-text-secondary text-sm"
                     placeholder="Search for anything"
                 />
             </div>
@@ -148,9 +157,6 @@ export function Navbar() {
             {/* Action Icons */}
             <div className="flex items-center gap-1 ml-auto shrink-0 h-full">
                 <div className="hidden sm:flex items-center">
-                    {/* <Button variant="ghost" size="icon" className="text-text-primary hover:bg-transparent hover:text-brand-primary h-full w-12 cursor-pointer">
-                        <Heart size={20} strokeWidth={1.5} />
-                    </Button> */}
                     <Button variant="ghost" size="icon" className="text-text-primary hover:bg-transparent hover:text-brand-primary h-full w-12 cursor-pointer">
                         <ShoppingCart size={20} strokeWidth={1.5} />
                     </Button>
@@ -158,10 +164,6 @@ export function Navbar() {
                         <Bell size={20} strokeWidth={1.5} />
                     </Button>
                 </div>
-
-                {/* <div className="hidden md:block">
-                    <ThemeToggle />
-                </div> */}
 
                 <div className="flex items-center gap-2 ml-2">
                     <Button variant="outline" asChild className="hidden md:flex border-text-primary text-text-primary hover:bg-[#f7f9fa] rounded-none px-4 h-10 font-bold cursor-pointer">
@@ -172,15 +174,14 @@ export function Navbar() {
                     </Button>
                 </div>
 
-                {/* Mobile Search Icon */}
                 <Button variant="ghost" size="icon" className="md:hidden ml-1">
                     <Search size={20} />
                 </Button>
-                {/* Mobile Cart Icon */}
                 <Button variant="ghost" size="icon" className="md:hidden ml-1">
                     <ShoppingCart size={20} />
                 </Button>
             </div>
+
         </nav>
     )
 }
